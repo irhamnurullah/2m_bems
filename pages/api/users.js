@@ -2,7 +2,9 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 export default async function handlerAddUser(req, res) {
-  if (req.method !== 'POST') return res.status(405).json({ message: 'mau ngapain bro ?' });
+  console.log(process.env.DATABASE_URL);
+
+  if (req.method !== 'POST') return res.status(405).json({ message: process.env.DATABASE_URL });
 
   try {
     const { name, email, company_name, industry } = req.body;
